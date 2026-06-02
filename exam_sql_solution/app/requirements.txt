@@ -1,0 +1,3 @@
+# External dependencies are not required.
+# Python 3.10+ with built-in tkinter and sqlite3 is enough.
+

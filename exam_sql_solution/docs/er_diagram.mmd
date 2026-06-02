@@ -1,0 +1,51 @@
+erDiagram
+    CUSTOMERS ||--o{ CUSTOMER_ORDERS : places
+    CUSTOMER_ORDERS ||--o{ ORDER_ITEMS : contains
+    PRODUCTS ||--o{ ORDER_ITEMS : ordered
+    PRODUCTS ||--o{ PRODUCT_MATERIALS : requires
+    MATERIALS ||--o{ PRODUCT_MATERIALS : used_in
+
+    CUSTOMERS {
+        int CustomerId PK
+        nvarchar CustomerName UK
+        nvarchar Phone
+        nvarchar Email
+    }
+
+    CUSTOMER_ORDERS {
+        int OrderId PK
+        int CustomerId FK
+        date OrderDate
+        date PlannedFinishDate
+        decimal TotalAmount
+    }
+
+    ORDER_ITEMS {
+        int OrderItemId PK
+        int OrderId FK
+        int ProductId FK
+        int Quantity
+        decimal UnitPriceAtOrder
+        decimal MaterialCostAtOrder
+    }
+
+    PRODUCTS {
+        int ProductId PK
+        nvarchar ProductName UK
+        nvarchar Specification
+        decimal SalePrice
+    }
+
+    MATERIALS {
+        int MaterialId PK
+        nvarchar MaterialName UK
+        nvarchar UnitName
+        decimal UnitCost
+    }
+
+    PRODUCT_MATERIALS {
+        int ProductId PK,FK
+        int MaterialId PK,FK
+        decimal QuantityPerProduct
+    }
+
